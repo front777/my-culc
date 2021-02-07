@@ -1,0 +1,135 @@
+﻿<html>
+<head>
+</head>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Monoton&family=Press+Start+2P&display=swap');
+    body {
+        text-align: center;
+        background: black;
+    }
+
+    #calc {
+        width: 250px;
+        background: #3242E5;
+        height: 360px;
+        border-radius: 20px;
+        margin-left: 41%;
+        margin-top: 12%;
+    }
+
+    #text-area {
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        height: 70px;
+        width:98%;
+        margin-left:1%;
+        background: white;
+        border-radius: 20px;
+        font-size: 25px;
+        line-height: 70px;
+        text-align: justify;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    #btns {
+        margin-top:-0.1%;
+        
+    }
+
+
+
+    .operation {
+      width:60px;
+      font-family:fantasy;
+        height: 60px;
+       font-size:20px;
+        display: inline-block;
+        text-align: center;
+        user-select: none;
+     padding:0.3%;
+        line-height:60px;
+        border-radius:20px;
+        
+      
+    }
+    .operation:hover{
+        background:yellow;
+    }
+    #follow {
+        height: 40px;
+        font-family: 'Dancing Script', cursive;
+        font-size:20px;
+        text-align:right;
+        color:yellow;
+        line-height:40px;
+    }
+</style>
+<body>
+    <div id="calc">
+        <div id="follow">
+           <p style="margin-right:4%;">by Ge Orgii</p>
+        </div>
+        <div id="text-area">
+           0
+        </div>
+        <div id="btns">
+           
+        </div>
+       
+    <script>
+        let signs = [
+        "1", "2", "3", "+",
+        "4", "5", "6", "-",
+        "7", "8", "9", "c",
+        "0", "/" ,"*", "=",       
+        
+        
+        ]; 
+
+        console.log(signs)
+
+        let calc = document.getElementById('calc');
+        let textArea = document.getElementById('text-area');
+        var btns = document.getElementById('btns');
+ 
+          signs.forEach(function(sign){
+        var signElement = document.createElement('div');
+        signElement.className = 'operation';
+        signElement.innerHTML = sign;
+        btns.appendChild(signElement);
+        })
+   
+          document.querySelectorAll('#calc .operation').forEach(function (button) {
+         button.addEventListener('click', onButtonClick);
+  
+    });
+       
+      
+        function onButtonClick(e){
+         if(textArea.innerHTML === '0' ){
+        textArea.innerHTML = e.target.innerHTML 
+        }
+        else if(e.target.innerHTML === '='){
+        textArea.innerHTML = eval(textArea.innerHTML)
+        }
+        else if(e.target.innerHTML === 'c'){
+        textArea.innerHTML = '0';
+        }
+        else{
+         textArea.innerHTML += e.target.innerHTML
+        }
+        }
+        
+       
+        
+
+
+
+        
+    </script>
+
+</body>
+
+</html>
